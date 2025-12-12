@@ -1,22 +1,3 @@
-using TMPro;
-using UnityEngine;
-
-public class PlayerCollision : MonoBehaviour
-{
-    public PlayerMovement movement;
-    public Collision2D collision2D;
-    public bool GameOver = false;
-    public TextMeshProUGUI text;
-    public Canvas canvas;
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Ground"))
-        {
-            movement.enabled = false;
-            canvas.enabled = true;
-            GameOver = true;
-            text.text = "You Died";
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:09607045bf2d1759f1d1649d26e5fd17cf83773f8f7e85bd8341f2e927bbfcbb
+size 552

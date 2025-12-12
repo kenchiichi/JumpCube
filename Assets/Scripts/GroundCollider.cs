@@ -1,27 +1,3 @@
-using UnityEngine;
-
-public class GroundCollider : MonoBehaviour
-{
-    private int _overlaps;
-    public bool isOverlapping
-    {
-        get
-        {
-            return _overlaps > 0;
-        }
-    }
-    void OnTriggerEnter2D()
-    {
-        _overlaps++;
-    }
-
-    void OnTriggerExit2D()
-    {
-        _overlaps--;
-    }
-    private void Start()
-    {
-        OnTriggerEnter2D();
-        OnTriggerExit2D();
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:eb0a039741a81f4b5560a5ce621aa206e8294c28e10b793b1f37f251389a4bea
+size 444
