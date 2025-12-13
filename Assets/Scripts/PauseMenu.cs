@@ -3,37 +3,19 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public Canvas canvas;
-    public PlayerCollision collision;
-    public PlayerMovement movement;
-    public TextMeshProUGUI text;
+    public GameManager manager;
+
+    public Canvas pauseScreen;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && canvas.enabled == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && pauseScreen.enabled == false)
         {
-            if (!collision.GameOver)
-            {
-                movement.enabled = false;
-                text.text = "Paused";
-            }
-            else
-            {
-                text.text = "You Died";
-            }
-            canvas.enabled = true;
+            manager.PauseGame(pauseScreen); 
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && canvas.enabled == true)
+        else if (Input.GetKeyDown(KeyCode.Escape) && pauseScreen.enabled == true)
         {
-            if (!collision.GameOver)
-            {
-                movement.enabled = true;
-                text.text = "Paused";
-            }
-            else
-            {
-                text.text = "You Died";
-            }
-                canvas.enabled = false;
+            manager.PlayGame(pauseScreen);
         }
     }
 }

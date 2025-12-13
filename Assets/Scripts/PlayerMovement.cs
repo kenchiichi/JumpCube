@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,28 +9,25 @@ public class PlayerMovement : MonoBehaviour
 
     public GroundCollider groundCollider;
 
-    void Update()
+    private void FixedUpdate()
     {
         //horizontal movement
         if (groundCollider.isOverlapping)
         {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
             {
-                rigidbody2.AddForce(new Vector2(0, verticalMovement));
+                rigidbody2.AddForce(new Vector2(0, verticalMovement),ForceMode2D.Impulse);
             }
         }
-    }
 
-    private void FixedUpdate()
-    {
         //vertical movement
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            rigidbody2.AddForce(new Vector2(-horizontalMovement * Time.deltaTime, 0));
+            rigidbody2.AddForce(new Vector2(-horizontalMovement, 0));
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            rigidbody2.AddForce(new Vector2(horizontalMovement * Time.deltaTime, 0));
+            rigidbody2.AddForce(new Vector2(horizontalMovement, 0));
         }
 
     }

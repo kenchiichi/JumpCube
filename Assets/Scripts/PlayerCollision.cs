@@ -3,20 +3,18 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    public GameManager manager;
+
+    public TextMeshProUGUI gameOverScoreText;
+    public Canvas gameOverScreen;
     public PlayerMovement movement;
-    public Collision2D collision2D;
-    public bool GameOver = false;
-    public TextMeshProUGUI text;
-    public Canvas canvas;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ground"))
+        if (collision.collider.CompareTag("Ground") && !manager.gameOver)
         {
-            movement.enabled = false;
-            canvas.enabled = true;
-            GameOver = true;
-            text.text = "You Died";
+            manager.gameOver = true;
+            manager.GameOver(gameOverScoreText, gameOverScreen);
         }
     }
 }
